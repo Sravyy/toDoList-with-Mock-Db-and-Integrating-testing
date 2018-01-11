@@ -8,7 +8,16 @@ namespace ToDoList.Models
 {
     public class EFItemRepository : IItemRepository
     {
-        ToDoListContext db = new ToDoListContext();
+     
+        ToDoListContext db;
+        public EFItemRepository()
+        {
+            db = new ToDoListContext();
+        }
+        public EFItemRepository(ToDoListContext thisDb)
+        {
+            db = thisDb;
+        }
 
         public IQueryable<Item> Items
         { get { return db.Items; } }

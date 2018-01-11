@@ -5,6 +5,7 @@ using ToDoList.Models;
 using ToDoList.Controllers;
 using Moq;
 using System.Linq;
+using ToDoList.Tests.Models;
 
 namespace ToDoList.Tests.ControllerTests
 {
@@ -13,6 +14,7 @@ namespace ToDoList.Tests.ControllerTests
     public class ItemsControllerTests
     {
         Mock<IItemRepository> mock = new Mock<IItemRepository>();
+        EFItemRepository db = new EFItemRepository(new TestDbContext());
 
         private void DbSetup()
         {
@@ -111,6 +113,24 @@ namespace ToDoList.Tests.ControllerTests
             // Assert
             Assert.IsInstanceOfType(resultView, typeof(ViewResult));
             Assert.IsInstanceOfType(model, typeof(Item));
+        }
+
+        [TestMethod]
+        public void DB_CreatesNewEntries_Collection()
+        {
+            // Arrange
+            ItemsController controller = new ItemsController(db);
+            Item testItem = new Item();
+            testItem.Description = "test item";
+            testItem.CategoryId = 8;
+
+
+            // Act
+            controller.Create(testItem);
+            var collection = (controller.Index() as ViewResult).ViewData.Model as List<Item>;
+
+            // Assert
+            CollectionAssert.Contains(collection, testItem);
         }
     }
 }
