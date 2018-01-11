@@ -17,10 +17,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `todolist`
+-- Database: `todolist_test`
 --
-CREATE DATABASE IF NOT EXISTS `todolist` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `todolist`;
+CREATE DATABASE IF NOT EXISTS `todolist_test` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `todolist_test`;
 
 -- --------------------------------------------------------
 
@@ -75,7 +75,8 @@ INSERT INTO `Items` (`ItemId`, `Description`, `CategoryId`) VALUES
 (18, 'test item', 1),
 (19, 'test item', 1),
 (20, 'test item', 1),
-(21, 'test item', 1);
+(21, 'test item', 1),
+(22, 'test item', 8);
 
 --
 -- Indexes for dumped tables
@@ -108,7 +109,7 @@ ALTER TABLE `Categories`
 -- AUTO_INCREMENT for table `Items`
 --
 ALTER TABLE `Items`
-  MODIFY `ItemId` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `ItemId` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
